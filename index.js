@@ -5,8 +5,6 @@ const typeDefs = require("./schema/typeDefs");
 const resolvers = require("./schema/resolvers");
 const { MONGODB } = require("./config");
 
-const resolvers = {};
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
