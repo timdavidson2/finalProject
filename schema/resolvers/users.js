@@ -25,11 +25,20 @@ module.exports = {
       });
       const res = await newUser.save();
 
-      const token = jwt.sign({
-        _id: res.id,
-        email: res.email,
-        username: res.username,
-      });
+      const token = jwt.sign(
+        {
+          _id: res.id,
+          email: res.email,
+          username: res.username,
+        },
+        SECRET_KEY,
+        { expiresIn: "1h" }
+      );
+      return {
+        ...res._doc,
+        _id: res._id,
+        token,
+      };
     },
   },
 };
